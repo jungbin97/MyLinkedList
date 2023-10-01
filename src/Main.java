@@ -9,10 +9,9 @@ public class Main {
         l.add(8);
         l.add(10);
         l.add(11);
-        System.out.println(l);
-        System.out.println(l.get(1));
 
-        l.delete(1);
-        System.out.println(l);
+        for (Integer val : l){
+            System.out.println(val);
+        }
     }
 }

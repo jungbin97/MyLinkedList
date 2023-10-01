@@ -1,6 +1,34 @@
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class MyLinkedList<E> {
+public class MyLinkedList<E> implements Iterable<E> {
+
+    @Override
+    public Iterator<E> iterator() {
+        return new MyIterator();
+    }
+
+    private class MyIterator implements Iterator<E> {
+        private Node<E> currentNode = head;
+
+        @Override
+        public boolean hasNext() {
+            return currentNode != null;
+        }
+
+        @Override
+        public E next() {
+            if (!hasNext()){
+                throw new NoSuchElementException();
+            }
+            E value = currentNode.item;
+            currentNode = currentNode.next;
+            return value;
+        }
+
+    }
+
     // 내부 static 클래스로 node
     private static class Node<E>{
         private E item; // Node에 담을 데이터
@@ -67,7 +95,7 @@ public class MyLinkedList<E> {
 //        }
 //    }
 
-    public void addLast(E value){
+    public void addLast(E value) {
         // 1. 먼저 가장 뒤의 요소를 가져옴
         Node<E> last = tail;
 
@@ -80,19 +108,20 @@ public class MyLinkedList<E> {
         // 4. 맨뒤 요소가 추가되엇으니 tail 업데이트
         tail = newNode;
 
-        if (last == null){
+        if (last == null) {
             // 5. 만일 최초로 요소가 add된것이면 head와 tail이 같은 노드를 가르켜야함
             head = newNode;
-        }else{
+        } else {
             // 6. 최소 노드 추가가 아니라면 last 변수에서 추가된 새노드를 링크해줘야함
             last.next = newNode;
         }
     }
 
-    public boolean add(E value){
+    public boolean add(E value) {
         addLast(value);
         return true;
     }
+
 
 //    public void add(int index, E value){
 //
@@ -261,4 +290,5 @@ public class MyLinkedList<E> {
         // 3. 배열을 스트링화하여 반환
         return Arrays.toString(array);
     }
+
 }
