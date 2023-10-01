@@ -13,5 +13,16 @@ public class Main {
         for (Integer val : l){
             System.out.println(val);
         }
+
+        // 스택 확인
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        System.out.println(stack.toString());
+
+        stack.pop();
+        System.out.println(stack.toString());
     }
 }

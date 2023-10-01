@@ -48,6 +48,9 @@ public class MyLinkedList<E> implements Iterable<E> {
 
     private int size;   // 노드 개수
 
+    public int getSize() {
+        return size;
+    }
 
     public MyLinkedList() {
         this.head = null;
