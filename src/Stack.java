@@ -39,7 +39,7 @@ public class Stack<E> {
         return size() == 0;
     }
 
-    public int size(){
+    public int size() {
         return list.getSize();
     }
 
